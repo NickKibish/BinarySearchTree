@@ -1,0 +1,6 @@
+use_frameworks!
+target 'NKBinarySearchTree_Tests' do
+  pod 'NKBinarySearchTree', :path => '../'
+  
+  
+end

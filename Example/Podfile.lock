@@ -1,0 +1,16 @@
+PODS:
+  - NKBinarySearchTree (0.1.0)
+
+DEPENDENCIES:
+  - NKBinarySearchTree (from `../`)
+
+EXTERNAL SOURCES:
+  NKBinarySearchTree:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  NKBinarySearchTree: d14f8f5111b6ec0800d739ef4bee5399ff9ea9c5
+
+PODFILE CHECKSUM: 426cff6871025be5b08b5aafc135a6bdd6bc9d45
+
+COCOAPODS: 1.2.1

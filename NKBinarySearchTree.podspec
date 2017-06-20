@@ -25,12 +25,12 @@ TODO: Add long description of the pod here.
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Mykola Kibysh' => 'mykola.kibysh@ticketmaster.com' }
-  s.source           = { :git => 'https://github.com/Mykola Kibysh/NKBinarySearchTree.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/NickKibish/BinarySearchTree.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'NKBinarySearchTree/Classes/**/*'
+  s.source_files = 'NKBinarySearchTree/**/*'
   
   # s.resource_bundles = {
   #   'NKBinarySearchTree' => ['NKBinarySearchTree/Assets/*.png']

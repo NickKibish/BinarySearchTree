@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  NKBinarySearchTree: d14f8f5111b6ec0800d739ef4bee5399ff9ea9c5
+  NKBinarySearchTree: bc1460803647b56da9c58fcf2f677d1dae6281b1
 
 PODFILE CHECKSUM: 426cff6871025be5b08b5aafc135a6bdd6bc9d45
 

@@ -14,13 +14,14 @@
 /* Begin PBXFileReference section */
 		0063225E6749028D0931C2A4 /* Pods-NKBinarySearchTree_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKBinarySearchTree_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NKBinarySearchTree_Tests/Pods-NKBinarySearchTree_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		113E023AC8B5B195842CBD44 /* Pods-NKBinarySearchTree_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NKBinarySearchTree_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NKBinarySearchTree_Tests/Pods-NKBinarySearchTree_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		22930FDE8B77E753DE1FA36E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		388377A0A60BD64D267CE0FB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		22930FDE8B77E753DE1FA36E /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		36EEF5B61EFD0BC3005EC6B4 /* BinarySearchTreeExample.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = BinarySearchTreeExample.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		388377A0A60BD64D267CE0FB /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		4AB96412318682356DA3EDD8 /* Pods_NKBinarySearchTree_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NKBinarySearchTree_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACE51AFB9204008FA782 /* NKBinarySearchTree_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NKBinarySearchTree_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		EFBD1A0A908F6BAADED3C75F /* NKBinarySearchTree.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = NKBinarySearchTree.podspec; path = ../NKBinarySearchTree.podspec; sourceTree = "<group>"; };
+		EFBD1A0A908F6BAADED3C75F /* NKBinarySearchTree.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = NKBinarySearchTree.podspec; path = ../NKBinarySearchTree.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +39,7 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				36EEF5B61EFD0BC3005EC6B4 /* BinarySearchTreeExample.playground */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
@@ -131,10 +133,6 @@
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
-					607FACCF1AFB9204008FA782 = {
-						CreatedOnToolsVersion = 6.3.1;
-						LastSwiftMigration = 0820;
-					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
 						LastSwiftMigration = 0820;

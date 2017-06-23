@@ -8,7 +8,17 @@
 
 import Foundation
 
-struct BinarySearchTree<Key: Comparable, Value> {
+public struct BinarySearchTree<Key: Comparable, Value>: ExpressibleByDictionaryLiteral {
+    public init() {
+        
+    }
+    
+    public init(dictionaryLiteral elements: (Key, Value)...) {
+        for (key, value) in elements {
+            put(key: key, value: value)
+        }
+    }
+    
     fileprivate class Node {
         var value: Value?
         var key: Key
@@ -27,6 +37,10 @@ struct BinarySearchTree<Key: Comparable, Value> {
 
 // MARK: - Private Methods
 extension BinarySearchTree {
+    fileprivate mutating func put(key: Key, value: Value?) {
+        rootNode = put(node: rootNode, key: key, value: value)
+    }
+    
     fileprivate func put(node: Node?, key: Key, value: Value?) -> Node {
         guard let node = node else {
             return Node(key: key, value: value)
@@ -55,12 +69,12 @@ extension BinarySearchTree {
 
 // MARK: - Public methods
 extension BinarySearchTree {
-    subscript (key: Key) -> Value? {
+    public subscript (key: Key) -> Value? {
         get {
             return getValue(for: key)
         }
         set (value) {
-            rootNode = put(node: rootNode, key: key, value: value)
+            put(key: key, value: value)
         }
     }
     

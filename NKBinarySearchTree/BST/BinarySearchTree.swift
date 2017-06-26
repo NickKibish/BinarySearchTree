@@ -7,15 +7,14 @@
 //
 
 import Foundation
+import NKQueue
 
 public struct BinarySearchTree<Key: Comparable, Value>: ExpressibleByDictionaryLiteral {
-    public init() {
-        
-    }
+    public init() { }
     
     public init(dictionaryLiteral elements: (Key, Value)...) {
         for (key, value) in elements {
-            put(key: key, value: value)
+            put(value: value, for: key)
         }
     }
     
@@ -37,10 +36,6 @@ public struct BinarySearchTree<Key: Comparable, Value>: ExpressibleByDictionaryL
 
 // MARK: - Private Methods
 extension BinarySearchTree {
-    fileprivate mutating func put(key: Key, value: Value?) {
-        rootNode = put(node: rootNode, key: key, value: value)
-    }
-    
     fileprivate func put(node: Node?, key: Key, value: Value?) -> Node {
         guard let node = node else {
             return Node(key: key, value: value)
@@ -56,7 +51,42 @@ extension BinarySearchTree {
         return node
     }
     
-    fileprivate func getValue(for key: Key) -> Value? {
+}
+
+extension BinarySearchTree {
+    public var min: Key? {
+        return nil
+    }
+    
+    public var max: Key? {
+        return nil
+    }
+    
+    public var isEmpty: Bool {
+        return false
+    }
+    
+    public var size: Int {
+        return 0
+    }
+}
+
+// MARK: - Public methods
+extension BinarySearchTree {
+    public subscript (key: Key) -> Value? {
+        get {
+            return value(for: key)
+        }
+        set (value) {
+            put(value: value, for: key)
+        }
+    }
+    
+    public mutating func put(value: Value?, for key: Key) {
+        rootNode = put(node: rootNode, key: key, value: value)
+    }
+    
+    public func value(for key: Key) -> Value? {
         var curr = rootNode
         while let node = curr {
             if key < node.key { curr = node.leftNode }
@@ -65,20 +95,20 @@ extension BinarySearchTree {
         }
         return nil
     }
-}
-
-// MARK: - Public methods
-extension BinarySearchTree {
-    public subscript (key: Key) -> Value? {
-        get {
-            return getValue(for: key)
-        }
-        set (value) {
-            put(key: key, value: value)
-        }
-    }
     
-    func deleteObject(at key: Key) {
+    public mutating func delete(at key: Key) {
         
     }
+    
+    public mutating func deleteAll() {
+        
+    }
+    
+    public func rank(at key: Key) -> Int {
+        return 0
+    }
+    
+    public func floor(for key: Key) -> Key? { return nil }
+    
+    public func ceiling(for key: Key) -> Key? { return nil }
 }

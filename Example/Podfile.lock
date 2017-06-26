@@ -1,5 +1,9 @@
 PODS:
-  - NKBinarySearchTree (0.1.0)
+  - NKBinarySearchTree (0.1.0):
+    - NKQueue
+  - NKLinkedList (0.2.3)
+  - NKQueue (0.1.2):
+    - NKLinkedList
 
 DEPENDENCIES:
   - NKBinarySearchTree (from `../`)
@@ -9,7 +13,9 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  NKBinarySearchTree: bc1460803647b56da9c58fcf2f677d1dae6281b1
+  NKBinarySearchTree: 4e4762fa377068a71f06e0c0a7f2238fa68a4774
+  NKLinkedList: 41134ee13d2bdedb1aa93ac481393bbc35a8bf51
+  NKQueue: 6bfaec3a19462e512636cc268a8f58b557571036
 
 PODFILE CHECKSUM: 426cff6871025be5b08b5aafc135a6bdd6bc9d45
 

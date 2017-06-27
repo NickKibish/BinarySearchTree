@@ -104,7 +104,7 @@ extension BinarySearchTree {
     }
     
     public var size: Int {
-        return 0
+        return rootNode?.count ?? 0
     }
 }
 

@@ -58,24 +58,6 @@ extension BinarySearchTree {
     
 }
 
-extension BinarySearchTree {
-    public var min: Key? {
-        return nil
-    }
-    
-    public var max: Key? {
-        return nil
-    }
-    
-    public var isEmpty: Bool {
-        return false
-    }
-    
-    public var size: Int {
-        return 0
-    }
-}
-
 // MARK: - Rank methods
 extension BinarySearchTree {
     fileprivate func rank(in node: Node?, for key: Key) -> Int {
@@ -91,6 +73,42 @@ extension BinarySearchTree {
         return n.leftNodeCount
     }
 }
+
+extension BinarySearchTree {
+    public var min: Key? {
+        var startNode = rootNode
+        var key = rootNode?.key
+        
+        while let node = startNode?.leftNode {
+            key = node.key
+            startNode = node
+        }
+        
+        return key
+    }
+    
+    public var max: Key? {
+        var startNode = rootNode
+        var key = rootNode?.key
+        
+        while let node = startNode?.rightNode {
+            key = node.key
+            startNode = node
+        }
+        
+        return key
+    }
+    
+    public var isEmpty: Bool {
+        return false
+    }
+    
+    public var size: Int {
+        return 0
+    }
+}
+
+
 
 // MARK: - Public methods
 extension BinarySearchTree {

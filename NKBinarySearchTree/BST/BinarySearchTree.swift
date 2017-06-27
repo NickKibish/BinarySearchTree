@@ -21,6 +21,7 @@ public struct BinarySearchTree<Key: Comparable, Value>: ExpressibleByDictionaryL
     fileprivate class Node {
         var value: Value?
         var key: Key
+        var count: Int = 1
         
         var leftNode: Node?
         var rightNode: Node?
@@ -29,6 +30,9 @@ public struct BinarySearchTree<Key: Comparable, Value>: ExpressibleByDictionaryL
             self.value = value
             self.key = key
         }
+        
+        var leftNodeCount: Int { return leftNode?.count ?? 0 }
+        var rightNodeCount: Int { return rightNode?.count ?? 0 }
     }
     
     fileprivate var rootNode: Node?
@@ -48,6 +52,7 @@ extension BinarySearchTree {
         } else {
             node.value = value
         }
+        node.count = 1 + node.leftNodeCount + node.rightNodeCount
         return node
     }
     
@@ -68,6 +73,22 @@ extension BinarySearchTree {
     
     public var size: Int {
         return 0
+    }
+}
+
+// MARK: - Rank methods
+extension BinarySearchTree {
+    fileprivate func rank(in node: Node?, for key: Key) -> Int {
+        guard let n = node else {
+            return 0
+        }
+        
+        if key < n.key {
+            return rank(in: n.leftNode, for: key)
+        } else if key > n.key {
+            return 1 + n.leftNodeCount + rank(in: n.rightNode, for: key)
+        }
+        return n.leftNodeCount
     }
 }
 
@@ -104,8 +125,8 @@ extension BinarySearchTree {
         
     }
     
-    public func rank(at key: Key) -> Int {
-        return 0
+    public func rank(for key: Key) -> Int {
+        return rank(in: rootNode, for: key)
     }
     
     public func floor(for key: Key) -> Key? { return nil }

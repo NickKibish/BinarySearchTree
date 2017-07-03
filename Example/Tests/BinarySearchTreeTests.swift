@@ -137,4 +137,29 @@ class BinarySearchTreeTests: XCTestCase {
         XCTAssertNil(floor1)
     }
     
+    func testIteration() {
+        var bst = BinarySearchTree<String, String>()
+        bst["S"] = "vS"
+        bst["E"] = "vE"
+        bst["X"] = "vX"
+        bst["A"] = "vA"
+        bst["R"] = "vR"
+        bst["C"] = "vC"
+        bst["H"] = "vH"
+        bst["M"] = "vM"
+        
+        let keysSet: Set<String> = ["S", "E", "X", "A", "R", "C", "H", "M"]
+        let valueSet: Set<String> = ["vS", "vE", "vX", "vA", "vR", "vC", "vH", "vM"]
+        
+        var bstKeySet = Set<String>()
+        var bstValueSet = Set<String>()
+        for (key, value) in bst {
+            bstKeySet.insert(key)
+            bstValueSet.insert(value)
+        }
+        
+        XCTAssertEqual(keysSet, bstKeySet)
+        XCTAssertEqual(valueSet, bstValueSet)
+    }
+    
 }

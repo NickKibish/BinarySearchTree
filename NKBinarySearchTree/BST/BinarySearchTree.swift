@@ -12,13 +12,42 @@ import NKQueue
 public struct BinarySearchTree<Key: Comparable, Value>: ExpressibleByDictionaryLiteral {
     public init() { }
     
+    public struct BinarySearchTreeIterator: IteratorProtocol {
+        var queue: Queue<Node>
+        
+        init(node: Node?) {
+            self.queue = Queue<Node>()
+            if let n = node {
+                inorder(node: n, queue: &self.queue)
+            }
+        }
+        
+        func inorder(node: Node?, queue: inout Queue<Node>) {
+            guard let node = node else {
+                return
+            }
+            
+            inorder(node: node.leftNode, queue: &queue)
+            queue.enqueue(node)
+            inorder(node: node.rightNode, queue: &queue)
+        }
+        
+        public mutating func next() -> (Key, Value)? {
+            let node = queue.dequeue()
+            guard let key = node?.key, let value = node?.value else {
+                return nil
+            }
+            return (key, value)
+        }
+    }
+    
     public init(dictionaryLiteral elements: (Key, Value)...) {
         for (key, value) in elements {
             put(value: value, for: key)
         }
     }
     
-    fileprivate class Node {
+    public class Node {
         var value: Value?
         var key: Key
         var count: Int = 1
@@ -247,5 +276,11 @@ extension BinarySearchTree {
     /// - Returns: Smallest key
     public func ceiling(for key: Key) -> Key? {
         return ceiling(node: rootNode, for: key)?.key
+    }
+}
+
+extension BinarySearchTree: Sequence {
+    public func makeIterator() -> BinarySearchTreeIterator {
+        return BinarySearchTreeIterator(node: rootNode)
     }
 }

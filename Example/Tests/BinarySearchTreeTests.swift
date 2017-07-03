@@ -41,6 +41,36 @@ class BinarySearchTreeTests: XCTestCase {
         XCTAssertEqual(bst.size, 0)
     }
     
+    func testDelete() {
+        var bst = BinarySearchTree<String, String>()
+        bst["S"] = "S"
+        bst["E"] = "E"
+        bst["X"] = "X"
+        bst["A"] = "A"
+        bst["R"] = "R"
+        bst["C"] = "C"
+        bst["H"] = "H"
+        bst["M"] = "M"
+        
+        bst.delete(at: "S")
+        XCTAssertEqual(bst.size, 7)
+        XCTAssertNil(bst["S"])
+        bst.deleteMin()
+        XCTAssertNil(bst["A"])
+        XCTAssertEqual(bst.size, 6)
+        bst.delete(at: "X")
+        XCTAssertNil(bst["X"])
+        XCTAssertEqual(bst.size, 5)
+        bst.delete(at: "E")
+        XCTAssertNil(bst["E"])
+        XCTAssertEqual(bst.size, 4)
+        bst.delete(at: "unexisted_key")
+        XCTAssertEqual(bst.size, 4)
+        bst.deleteAll()
+        XCTAssertEqual(bst.size, 0)
+        XCTAssertTrue(bst.isEmpty)
+    }
+    
     func testRank() {
         var bst = BinarySearchTree<String, String>()
         bst["S"] = "S"

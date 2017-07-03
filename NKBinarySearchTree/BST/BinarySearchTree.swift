@@ -141,11 +141,47 @@ extension BinarySearchTree {
     }
     
     public var isEmpty: Bool {
-        return false
+        return (rootNode?.count ?? 0) == 0
     }
     
     public var size: Int {
         return rootNode?.count ?? 0
+    }
+}
+
+// MARK: - Deletion methods
+extension BinarySearchTree {
+    fileprivate func deleteMin(node: Node?) -> Node? {
+        guard let n = node,
+            let leftNode = node?.leftNode else {
+            return node?.rightNode
+        }
+        
+        n.leftNode = deleteMin(node: leftNode)
+        n.count = 1 + n.leftNodeCount + n.rightNodeCount
+        return n
+    }
+    
+    fileprivate func delete(node: Node?, for key: Key) -> Node? {
+        guard let node = node else { return nil }
+        var tNode: Node? = node
+        if key < node.key {
+            tNode?.leftNode = delete(node: node.leftNode, for: key)
+        } else if key > node.key {
+            tNode?.rightNode = delete(node: node.rightNode, for: key)
+        } else {
+            guard let _ = node.rightNode else { return node.leftNode }
+            guard let _ = node.leftNode else { return node.rightNode }
+            
+            tNode = min(node: node.rightNode)
+            tNode?.rightNode = deleteMin(node: node.rightNode)
+            tNode?.leftNode = node.leftNode
+        }
+        let lnc = tNode?.leftNodeCount ?? 0
+        let rnc = tNode?.rightNodeCount ?? 0
+        
+        tNode?.count = lnc + rnc + 1
+        return tNode
     }
 }
 
@@ -174,8 +210,14 @@ extension BinarySearchTree {
         return nil
     }
     
+    public mutating func deleteMin() {
+        if let node = rootNode {
+            rootNode = deleteMin(node: node)
+        }
+    }
+    
     public mutating func delete(at key: Key) {
-        
+        rootNode = delete(node: rootNode, for: key)
     }
     
     public mutating func deleteAll() {

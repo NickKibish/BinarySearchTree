@@ -22,7 +22,7 @@ A binary search tree is a rooted binary tree, whose internal nodes each store a 
 This is implementation of algorithm from `Algorithhms 4th Edition` by Robert Sedgewick.
                        DESC
 
-  s.homepage         = 'https://github.com/Mykola Kibysh/NKBinarySearchTree'
+  s.homepage         = 'https://github.com/NickKibish/BinarySearchTree'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Mykola Kibysh' => 'mykola.kibysh@ticketmaster.com' }

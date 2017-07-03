@@ -210,6 +210,7 @@ extension BinarySearchTree {
         return nil
     }
     
+    /// Delete min element
     public mutating func deleteMin() {
         if let node = rootNode {
             rootNode = deleteMin(node: node)
@@ -224,6 +225,10 @@ extension BinarySearchTree {
         rootNode = nil
     }
     
+    /// How many keys < k?
+    ///
+    /// - Parameter key: provided key
+    /// - Returns: count of keys < provided key
     public func rank(for key: Key) -> Int {
         return rank(in: rootNode, for: key)
     }

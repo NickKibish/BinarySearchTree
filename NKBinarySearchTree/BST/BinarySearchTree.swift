@@ -74,29 +74,70 @@ extension BinarySearchTree {
     }
 }
 
+//MARK: - Floor / Ceiling methods 
 extension BinarySearchTree {
-    public var min: Key? {
-        var startNode = rootNode
-        var key = rootNode?.key
-        
-        while let node = startNode?.leftNode {
-            key = node.key
-            startNode = node
+    fileprivate func floor(node: Node?, for key: Key) -> Node? {
+        guard let node = node else {
+            return nil
+        }
+    
+        if key == node.key {
+            return node
+        } else if key < node.key {
+            return floor(node: node.leftNode, for: key)
         }
         
-        return key
+        guard let rightNode = floor(node: node.rightNode, for: key) else {
+            return node
+        }
+        
+        return rightNode
+    }
+    
+    fileprivate func ceiling(node: Node?, for key: Key) -> Node? {
+        guard let node = node else {
+            return nil
+        }
+        
+        if key == node.key {
+            return node
+        } else if key > node.key {
+            return ceiling(node: node.rightNode, for: key)
+        }
+        
+        guard let leftNode = ceiling(node: node.leftNode, for: key) else {
+            return node
+        }
+        
+        return leftNode
+    }
+}
+
+// MARK: - Min / Max methods
+extension BinarySearchTree {
+    fileprivate func min(node: Node?) -> Node? {
+        guard let leftNode = node?.leftNode else {
+            return node
+        }
+        return min(node: leftNode)
+    }
+    
+    fileprivate func max(node: Node?) -> Node? {
+        guard let rightNode = node?.rightNode else {
+            return node
+        }
+        return max(node: rightNode)
+    }
+}
+
+// MARK: - Public values
+extension BinarySearchTree {
+    public var min: Key? {
+        return min(node: rootNode)?.key
     }
     
     public var max: Key? {
-        var startNode = rootNode
-        var key = rootNode?.key
-        
-        while let node = startNode?.rightNode {
-            key = node.key
-            startNode = node
-        }
-        
-        return key
+        return max(node: rootNode)?.key
     }
     
     public var isEmpty: Bool {
@@ -107,8 +148,6 @@ extension BinarySearchTree {
         return rootNode?.count ?? 0
     }
 }
-
-
 
 // MARK: - Public methods
 extension BinarySearchTree {
@@ -140,14 +179,26 @@ extension BinarySearchTree {
     }
     
     public mutating func deleteAll() {
-        
+        rootNode = nil
     }
     
     public func rank(for key: Key) -> Int {
         return rank(in: rootNode, for: key)
     }
     
-    public func floor(for key: Key) -> Key? { return nil }
+    /// Largest Key <= given key
+    ///
+    /// - Parameter key: given key
+    /// - Returns: Largest Key
+    public func floor(for key: Key) -> Key? {
+        return floor(node: rootNode, for: key)?.key
+    }
     
-    public func ceiling(for key: Key) -> Key? { return nil }
+    /// Smallest key >= given key
+    ///
+    /// - Parameter key: given key
+    /// - Returns: Smallest key
+    public func ceiling(for key: Key) -> Key? {
+        return ceiling(node: rootNode, for: key)?.key
+    }
 }

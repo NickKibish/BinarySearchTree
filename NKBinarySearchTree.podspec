@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'NKBinarySearchTree'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of NKBinarySearchTree.'
+  s.summary          = 'Binary Search Tree Swift implementation'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -18,7 +18,8 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+A binary search tree is a rooted binary tree, whose internal nodes each store a key (and optionally, an associated value) and each have two distinguished sub-trees, commonly denoted left and right. The tree additionally satisfies the binary search tree property, which states that the key in each node must be greater than or equal to any key stored in the left sub-tree, and less than or equal to any key stored in the right sub-tree. (The leaves (final nodes) of the tree contain no key and have no structure to distinguish them from one another. Leaves are commonly represented by a special leaf or nil symbol, a NULL pointer, etc.)
+This is implementation of algorithm from `Algorithhms 4th Edition` by Robert Sedgewick.
                        DESC
 
   s.homepage         = 'https://github.com/Mykola Kibysh/NKBinarySearchTree'
